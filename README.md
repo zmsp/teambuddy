@@ -1,6 +1,6 @@
 <div align="center">
 
-# Ì†ΩÌ∫Ä Team Buddy
+# Team Buddy
 ### *The central hub for Team Maker project management*
 
 [![Issue Tracking](https://img.shields.io/badge/Issues-Track%20Bugs-red?style=for-the-badge&logo=github)](https://github.com/zmsp/teambuddy/issues)
@@ -15,31 +15,33 @@
 
 </div>
 
-## Ô∏è‚ú® Key Features
+## Key Features
 Team Maker is designed for organizers and referees who need fair, fast, and professional squad management.
 
-*   ‚öñÔ∏è **Smart Balancing**: Algorithms that weigh skill level, gender, and roles.
-*   Ì†ΩÌ≥ã **Pro Scoreboard**: Integrated timers and country-themed palettes.
-*   ‚ö° **Meetup Integration**: Quick import from attendance lists.
-*   Ì†ΩÌ¥í **Privacy First**: All data is stored locally on your device.
-*   Ì†ΩÌ≥∂ **Offline Ready**: Works anywhere, even without an internet connection.
+*   **Smart Balancing**: Algorithms that weigh skill level, gender, and roles.
+*   **Pro Scoreboard**: Integrated timers and country-themed palettes.
+*   **Meetup Integration**: Quick import from attendance lists.
+*   **Privacy First**: All data is stored locally on your device.
+*   **Offline Ready**: Works anywhere, even without an internet connection.
 
-## Ì†ΩÌ≥± Mobile Apps
-Currently in development. Placeholders for upcoming releases:
-- Ì†æÌ¥ñ **Android**: [Get it on Google Play](#) *(Coming Soon)*
-- Ì†ºÌΩé **iOS**: [Download on the App Store](#) *(Coming Soon)*
+## Mobile Apps
+Currently in development. Download the app when available:
+<center>
+<a href='#'><img src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' alt='Get it on Google Play' width="200"/></a>
+<br/>
+<a href='#'><img src='https://developer.apple.com/app-store/marketing/guidelines/images/badge-pre-order-on-the-app-store.svg' alt='Download on the App Store' width="180"/></a>
+</center>
 
-## Ì†ΩÌª† Repository Purpose
+## Repository Purpose
 This repository is the home for:
-- Ì†ΩÌ∞û **Issue Tracking**: Report bugs or suggest new features.
-- Ì†ΩÌ≥ñ **Technical Wiki**: Detailed guides and user manuals.
-- Ì†ΩÌ∫Ä **Web Hosting**: Serves the live application via GitHub Pages.
+-  **Issue Tracking**: Report bugs or suggest new features.
+-  **Technical Wiki**: Detailed guides and user manuals.
+-  **Web Hosting**: Serves the live application via GitHub Pages.
 
-## Ì†ΩÌ≤ª Development
+##  Development
 The core flutter code and feature development are located in our main repository:
-Ì†ΩÌ±â [**zmsp/teammaker**](https://github.com/zmsp/teammaker)
+ [**zmsp/teammaker**](https://github.com/zmsp/teammaker)
 
----
 <div align="center">
-Created with ‚ù§Ô∏è for fair play.
+Created for fair play.
 </div>
