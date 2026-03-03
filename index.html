@@ -6,9 +6,11 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  
-  <meta name="description" content="Team Maker Buddy: Professional Squad Management & Fair Team Balancing for referees and organizers.">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+  <meta name="description"
+    content="Team Maker Buddy: Professional Squad Management & Fair Team Balancing for referees and organizers.">
   <meta name="keywords" content="team maker, squad management, fair teams, referee tools, tournament maker">
   <meta name="author" content="Shahadat">
 
@@ -38,23 +40,30 @@
   <meta name="theme-color" content="#000000">
 
   <!-- Google Tag Manager / Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD19H2EW3Q"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-RD19H2EW3Q');
-  </script>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PH67SW4T');</script>
+  <!-- End Google Tag Manager -->
 
   <style>
     body {
       background-color: #000000;
       margin: 0;
       padding: 0;
-      overflow: hidden;
       /* Borderless feel on mobile */
       height: 100vh;
       width: 100vw;
+    }
+
+    overflow: hidden;
+    /* Borderless feel on mobile */
+    height: 100vh;
+    width: 100vw;
     }
 
     #loading {
@@ -70,10 +79,10 @@
 
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-PGDBNL3"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PH67SW4T"
       style="display:none;visibility:hidden" width="0"></iframe>
   </noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <div id="loading">
     <p>Loading Team Buddy...</p>
@@ -81,7 +90,7 @@
 
   <script src="main.dart.js" type="application/javascript"></script>
   <script>
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
       // Remove loading indicator once script is loaded
       var loading = document.getElementById('loading');
       if (loading) {
