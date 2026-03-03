@@ -24,15 +24,20 @@ Team Maker is designed for organizers and referees who need fair, fast, and prof
 *   í ½í´’ **Privacy First**: All data is stored locally on your device.
 *   í ½í³¶ **Offline Ready**: Works anywhere, even without an internet connection.
 
+## í ½í³± Mobile Apps
+Currently in development. Placeholders for upcoming releases:
+- í ¾í´– **Android**: [Get it on Google Play](#) *(Coming Soon)*
+- í ¼í½Ž **iOS**: [Download on the App Store](#) *(Coming Soon)*
+
 ## í ½í»  Repository Purpose
 This repository is the home for:
 - í ½í°ž **Issue Tracking**: Report bugs or suggest new features.
 - í ½í³– **Technical Wiki**: Detailed guides and user manuals.
 - í ½íº€ **Web Hosting**: Serves the live application via GitHub Pages.
 
-## í ½í´— Project Links
-- **Official Website**: [teambuddy.shahadat.us](https://teambuddy.shahadat.us/)
-- **Main Codebase**: [zmsp/teammaker](https://github.com/zmsp/teammaker)
+## í ½í²» Development
+The core flutter code and feature development are located in our main repository:
+í ½í±‰ [**zmsp/teammaker**](https://github.com/zmsp/teammaker)
 
 ---
 <div align="center">
