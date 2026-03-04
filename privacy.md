@@ -1,7 +1,7 @@
-# Privacy Policy for Team Maker Buddy
+# Privacy Policy for Captains Team Maker
 
 ## Overview
-Team Maker Buddy is committed to "High Integrity Privacy." We respect your privacy and are dedicated to protecting any personal information that may be involved during your use of the app. This policy explains our approach to data collection, usage, and local storage.
+Captains Team Maker is committed to "High Integrity Privacy." We respect your privacy and are dedicated to protecting any personal information that may be involved during your use of the app. This policy explains our approach to data collection, usage, and local storage.
 
 By using the App, you agree to the terms of this Privacy Policy.
 
@@ -35,6 +35,7 @@ We do not disclose your information to third parties. We do not sell or trade an
 
 ## Data Retention and Deletion
 *   **User Data:** Since all data is stored locally, deleting the Team Maker Buddy app from your device will permanently remove all squad and player information.
+*   **User Data:** Since all data is stored locally, deleting the Captains Team Maker app from your device will permanently remove all squad and player information.
 *   **Store Data:** We do not retain personal identifiers from store-provided metrics.
 
 ## Permissions
@@ -45,7 +46,7 @@ We do not disclose your information to third parties. We do not sell or trade an
 We employ modern development practices to ensure your local data is handled securely. However, please remember that no method of electronic storage is 100% secure, and we recommend using device-level security (passcodes/biometrics) to protect your hardware.
 
 ## Children's Privacy
-Team Maker Buddy is not intended for children under the age of 13. We do not knowingly collect or solicit personal information from children. If you are under 13, please do not use the app.
+Captains Team Maker is not intended for children under the age of 13. We do not knowingly collect or solicit personal information from children. If you are under 13, please do not use the app.
 
 ## Changes to This Policy
 We reserve the right to modify this Privacy Policy to reflect changes in our practices or for legal reasons. Updates will be indicated by a new version number or date at the top of the policy.
