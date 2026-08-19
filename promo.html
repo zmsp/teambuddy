@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Maker Buddy | Professional Squad & Roster Management</title>
+    <meta name="description"
+        content="The ultimate tool for referees and sports organizers. Build fair teams, manage player queues, and track scores seamlessly.">
+
+    <meta property="og:image" content="icons/Icon-512.png">
+    <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            /* Vibrant Modern Theme */
+            --primary-accent: #216C2E;
+            --secondary-accent: #4ade80;
+            --tertiary-accent: #2ea043;
+            
+            --bg-deep: #f0fdf4; /* Soft Green tint */
+            --bg-surface: #ffffff;
+            --text-main: #064e3b; /* Deep Forest Green */
+            --text-muted: #15803d; /* Bright Green */
+            
+            --main-gradient: linear-gradient(135deg, #4ade80 0%, #216C2E 50%, #064e3b 100%);
+            
+            --glass: rgba(0, 0, 0, 0.03);
+            --glass-border: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 110px;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-deep);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .brand img {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            box-shadow: 0 0 20px rgba(33, 108, 46, 0.4);
+        }
+
+        .brand span {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-text-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+        .nav-text-link:hover {
+            color: var(--primary-accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            padding: 200px 0 100px;
+            text-align: center;
+        }
+
+        /* Colorful Accents in Background */
+        .bg-glow {
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+        .glow-1 { top: -10%; right: -5%; background: var(--primary-accent); }
+        .glow-2 { bottom: 10%; left: -5%; background: var(--secondary-accent); }
+        .glow-3 { bottom: -10%; right: 20%; background: var(--tertiary-accent); }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(33, 108, 46, 0.1);
+            border: 1px solid rgba(33, 108, 46, 0.2);
+            color: var(--text-main);
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+            animation: fadeIn 1s ease-out;
+        }
+        .hero-badge i { color: var(--primary-accent); }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 9vw, 5.5rem);
+            line-height: 1;
+            margin-bottom: 24px;
+            letter-spacing: -0.04em;
+            animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .hero h1 span.primary { color: var(--primary-accent); }
+        .hero h1 span.secondary { color: var(--secondary-accent); }
+
+        .hero p {
+            font-size: 1.35rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 56px;
+            line-height: 1.5;
+            animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* --- CTA Group & Official Store Badges --- */
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            animation: slideUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .store-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: #000;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 210px;
+            text-align: left;
+        }
+
+        .store-badge i {
+            font-size: 30px;
+        }
+
+        .badge-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .badge-text small {
+            display: block;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            line-height: 1;
+            margin-bottom: 2px;
+            opacity: 0.8;
+        }
+
+        .badge-text span {
+            display: block;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.1;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .store-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            border-color: #555;
+            background: #0a0a0a;
+        }
+
+        .btn-launch-web {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 28px;
+            background: var(--main-gradient);
+            color: white;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(33, 108, 46, 0.2);
+            height: 62px; /* Match height of badges roughly */
+        }
+
+        .btn-launch-web:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(33, 108, 46, 0.4);
+        }
+
+        /* --- Modern Conversion Styles --- */
+        @keyframes subtlePulse {
+            0% { box-shadow: 0 0 0 0 rgba(33, 108, 46, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(33, 108, 46, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(33, 108, 46, 0); }
+        }
+
+        .cta-subtitle {
+            font-size: 1.1rem;
+            color: var(--tertiary-accent);
+            font-weight: 600;
+            margin-bottom: 16px;
+            animation: fadeIn 1s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .primary-cta {
+            animation: subtlePulse 2.5s infinite cubic-bezier(0.66, 0, 0, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .primary-cta::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-20deg);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        /* --- Featured Video Preview --- */
+        .video-container {
+            margin-top: 100px;
+            padding: 0 24px;
+            animation: slideUp 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .browser-frame {
+            max-width: 900px; /* Video width */
+            margin: 0 auto;
+            position: relative;
+            background: #000;
+            border-radius: 20px;
+            box-shadow: 0 50px 100px -25px rgba(0,0,0,0.15),
+                        0 0 20px rgba(33, 108, 46, 0.15);
+            border: 1px solid var(--glass-border);
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+
+        .browser-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- Features Section --- */
+        .features {
+            padding: 140px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+        }
+        .section-header .color-accent {
+            background: linear-gradient(to right, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-surface);
+            padding: 40px;
+            border-radius: 32px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(33, 108, 46, 0.4);
+            background: #f0fdf4;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 28px;
+        }
+        .icon-primary { background: rgba(33, 108, 46, 0.1); color: var(--primary-accent); }
+        .icon-secondary { background: rgba(74, 222, 128, 0.1); color: var(--secondary-accent); }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+        }
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* --- Alternate Backgrounds --- */
+        .bg-alternate {
+            background: rgba(33, 108, 46, 0.02);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 100px 0 50px;
+            background: var(--bg-deep);
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--primary-accent); }
+
+        /* --- Animations --- */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { 
+            from { opacity: 0; transform: translateY(40px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 3.5rem; }
+            .section-header h2 { font-size: 2.6rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .brand span { display: none; }
+            .nav-links { gap: 12px !important; }
+            .btn-launch-web span { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="/promo" class="brand">
+                <img src="icons/Icon-192.png" alt="Team Maker Buddy Logo">
+                <span>Team Maker Buddy</span>
+            </a>
+            <div class="nav-links" style="display: flex; gap: 20px; align-items: center;">
+                <a href="https://apps.shahadat.us" class="nav-text-link">See all my apps</a>
+                <a href="/" class="nav-text-link">Web App</a>
+                <div style="width: 1px; height: 16px; background: var(--glass-border); margin: 0 4px;"></div>
+                <a href="https://apps.apple.com/app/id6759995215" target="_blank" class="nav-text-link" title="Download on App Store" style="font-size: 1.3rem;">
+                    <i class="fab fa-apple"></i>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=io.github.zmsp.teammaker" target="_blank" class="nav-text-link" title="Get it on Google Play" style="font-size: 1.2rem;">
+                    <i class="fab fa-google-play"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="bg-glow glow-1"></div>
+        <div class="bg-glow glow-2"></div>
+        <div class="bg-glow glow-3"></div>
+        
+        <div class="container">
+            <div class="hero-badge">
+                <i class="fas fa-trophy"></i>
+                <span>Professional Squad Management</span>
+            </div>
+            <h1>Fair Teams. <br><span class="primary">Fast Games.</span></h1>
+            <p>The smartest way to organize matches, manage rosters, and balance teams based on skill and gender. Built by Referees, for the game.</p>
+
+            <div class="cta-subtitle">
+                <i class="fas fa-check-circle"></i> Simple &amp; Intuitive &bull; Create Matches Instantly
+            </div>
+            
+            <div class="cta-group" id="download" style="gap: 16px;">
+                <a href="https://apps.apple.com/app/id6759995215" target="_blank" class="store-badge" style="border-color: rgba(33, 108, 46, 0.3);">
+                    <i class="fab fa-apple"></i>
+                    <div class="badge-text">
+                        <small>Download on the</small>
+                        <span>App Store</span>
+                    </div>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=io.github.zmsp.teammaker" target="_blank" class="store-badge" style="border-color: rgba(33, 108, 46, 0.3);">
+                    <i class="fab fa-google-play"></i>
+                    <div class="badge-text">
+                        <small>GET IT ON</small>
+                        <span>Google Play</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="cta-group" style="margin-top: 24px; justify-content: center; gap: 20px;">
+                <a href="#video-demo" class="btn-launch-web primary-cta" style="font-size: 1.1rem; padding: 12px 32px; border-radius: 99px;">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Watch Demo</span>
+                </a>
+                <a href="/" class="btn-launch-web" style="font-size: 1.1rem; padding: 12px 32px; border-radius: 99px; background: white; color: var(--primary-accent); border: 2px solid var(--primary-accent); box-shadow: none;">
+                    <i class="fas fa-globe"></i>
+                    <span>Open Web App</span>
+                </a>
+            </div>
+
+            <div class="video-container" id="video-demo">
+                <div class="browser-frame">
+                    <iframe src="https://www.youtube.com/embed/JNIonHh50So" title="Team Maker Buddy Demo"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Designed for <span class="color-accent">Excellence</span></h2>
+                <p>Everything you need to manage your sports community in one place.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon icon-primary"><i class="fas fa-balance-scale"></i></div>
+                    <h3>Fair Balancing</h3>
+                    <p>Algorithm-driven team creation based on player skill levels, gender, and availability settings. Never worry about stacked teams again.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-secondary"><i class="fas fa-users"></i></div>
+                    <h3>Roster Management</h3>
+                    <p>Maintain your player database with ease. Add, edit, or remove players with instant local sync across your devices.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-primary"><i class="fas fa-stopwatch"></i></div>
+                    <h3>Real-time Tools</h3>
+                    <p>Built-in scoreboard and half-time trackers keep the game moving professionally, so you can focus on reffing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-secondary"><i class="fas fa-share-nodes"></i></div>
+                    <h3>Easy Sharing</h3>
+                    <p>Export the final rosters and share them directly with your community chat via WhatsApp, iMessage, or email.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-primary"><i class="fas fa-chart-line"></i></div>
+                    <h3>Match History</h3>
+                    <p>Keep track of past games, team compositions, and scores to resolve disputes and track long-term player stats.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-secondary"><i class="fas fa-bolt"></i></div>
+                    <h3>Quick Modes</h3>
+                    <p>Short on time? Use the quick generator to randomly assign available players to teams instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <a href="/promo" class="footer-logo">
+                <img src="icons/Icon-192.png" alt="Logo" style="width: 40px; border-radius: 12px;">
+                <span>Team Maker Buddy</span>
+            </a>
+            <div class="footer-links">
+                <a href="/">Web App</a>
+                <a href="/promo">Features</a>
+                <a href="privacy.md">Privacy Policy</a>
+                <a href="https://github.com/zmsp">Developer</a>
+                <a href="mailto:help@shahadat.us">Support</a>
+            </div>
+
+            <p style="color: var(--text-muted); font-size: 0.95rem;">&copy; 2026 Team Maker Buddy. Crafted for fair play.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
